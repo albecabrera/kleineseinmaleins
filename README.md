@@ -2,7 +2,9 @@
 
 Printable multiplication table worksheet generator for primary school students.
 
-**[Live Demo](https://albecabrera.github.io/kleineseinmaleins/)**
+**[Live Demo](https://albecabrera.github.io/kleineseinmaleins/) · [Quick Access → https://tinyurl.com/27ax8ajt](https://tinyurl.com/27ax8ajt)**
+
+<img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://tinyurl.com/27ax8ajt" alt="QR Code" />
 
 ## What it does
 
