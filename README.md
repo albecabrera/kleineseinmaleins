@@ -2,9 +2,9 @@
 
 Printable multiplication table test sheet for primary school students.
 
-**[Live Demo](https://albecabrera.github.io/kleineseinmaleins/) · [5-Minuten Einmaleins-Test → https://tinyurl.com/5-minuten-einmaleins-test](https://tinyurl.com/5-minuten-einmaleins-test)**
+**[Live Demo](https://albecabrera.github.io/kleineseinmaleins/) · [5-Minuten Einmaleins-Test → https://tinyurl.com/27ax8ajt](https://tinyurl.com/27ax8ajt)**
 
-<img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://tinyurl.com/5-minuten-einmaleins-test" alt="QR Code" />
+<img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://tinyurl.com/27ax8ajt" alt="QR Code" />
 
 ## What it does
 
