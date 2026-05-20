@@ -191,6 +191,31 @@
     font-weight: 700;
   }
 
+  /* ── Solution sheet ── */
+  .solution-sheet .qcard {
+    background: #fafafa;
+  }
+
+  .qcard .answer-filled {
+    font-weight: 900;
+    color: #000;
+    font-size: 0.82rem;
+  }
+
+  .solution-label {
+    display: inline-block;
+    font-size: 0.55rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    background: #000;
+    color: #fff;
+    padding: 1px 6px;
+    border-radius: 2px;
+    margin-left: 8px;
+    vertical-align: middle;
+  }
+
   /* ── Print ── */
   @media print {
     body { background: #fff; padding: 0; display: block; }
@@ -201,7 +226,9 @@
       box-shadow: none;
       padding: 8mm 10mm 12mm;
       overflow: hidden;
-      page-break-after: avoid;
+    }
+    .sheet:first-of-type {
+      page-break-after: always;
     }
   }
 </style>
@@ -281,6 +308,58 @@
 
 </div>
 
+<!-- ── Lösungsblatt ── -->
+<div class="sheet solution-sheet" style="margin-top: 20px;">
+
+  <div class="header">
+    <svg class="fox-logo" viewBox="0 0 100 105" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="14,58 28,10 46,52" fill="white" stroke="black" stroke-width="3" stroke-linejoin="round"/>
+      <polygon points="19,55 28,24 41,50" fill="black"/>
+      <polygon points="54,52 72,10 86,58" fill="white" stroke="black" stroke-width="3" stroke-linejoin="round"/>
+      <polygon points="59,50 72,24 81,55" fill="black"/>
+      <ellipse cx="50" cy="72" rx="36" ry="28" fill="white" stroke="black" stroke-width="3"/>
+      <ellipse cx="50" cy="85" rx="15" ry="9" fill="white" stroke="black" stroke-width="2"/>
+      <ellipse cx="50" cy="81" rx="5" ry="3.5" fill="black"/>
+      <path d="M43,90 Q50,96 57,90" stroke="black" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+      <circle cx="34" cy="67" r="9.5" fill="white" stroke="black" stroke-width="2"/>
+      <circle cx="66" cy="67" r="9.5" fill="white" stroke="black" stroke-width="2"/>
+      <line x1="43.5" y1="67" x2="56.5" y2="67" stroke="black" stroke-width="2"/>
+      <line x1="24.5" y1="65" x2="17" y2="61" stroke="black" stroke-width="2"/>
+      <line x1="75.5" y1="65" x2="83" y2="61" stroke="black" stroke-width="2"/>
+      <circle cx="34" cy="67" r="4.5" fill="black"/>
+      <circle cx="66" cy="67" r="4.5" fill="black"/>
+      <circle cx="36" cy="65" r="1.5" fill="white"/>
+      <circle cx="68" cy="65" r="1.5" fill="white"/>
+    </svg>
+
+    <div class="title-block">
+      <div class="title-main">5-Minuten Einmaleins-Test <span class="solution-label">Lösungsblatt</span></div>
+    </div>
+
+    <div class="meta-fields">
+      <div class="meta-row">
+        <div class="meta-field">
+          Name: <div class="meta-line" style="width:120px"></div>
+        </div>
+        <div class="meta-field" style="margin-left:16px">
+          Datum: <div class="meta-line" style="width:90px"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="questions" id="solution-grid"></div>
+
+  <div class="footer">
+    <div class="score-row">
+      Anzahl richtiger Aufgaben:
+      <span class="score-blank"></span>
+      <span class="score-denom">/ 72</span>
+    </div>
+  </div>
+
+</div>
+
 <p class="print-note" style="margin-top:10px;font-size:0.65rem;color:#999;text-align:center;">
   Querformat A4 · Seitenränder auf „Keine" setzen beim Drucken
 </p>
@@ -297,7 +376,9 @@
 
   function generate() {
     const grid = document.getElementById('grid');
+    const solutionGrid = document.getElementById('solution-grid');
     grid.innerHTML = '';
+    solutionGrid.innerHTML = '';
 
     // Tables 2–9, factors 2–10 → 72 questions
     const questions = shuffle(
@@ -314,6 +395,14 @@
         <div class="qtext">${q.m} &times; ${q.f} = <span class="answer-blank"></span></div>
       `;
       grid.appendChild(card);
+
+      const sol = document.createElement('div');
+      sol.className = 'qcard';
+      sol.innerHTML = `
+        <div class="qnum">${idx + 1}.</div>
+        <div class="qtext">${q.m} &times; ${q.f} = <span class="answer-filled">${q.m * q.f}</span></div>
+      `;
+      solutionGrid.appendChild(sol);
     });
   }
 
