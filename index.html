@@ -191,7 +191,11 @@
     font-weight: 700;
   }
 
-  /* ── Solution sheet ── */
+  /* ── Solution sheet — screen: hidden, print: page 2 ── */
+  .solution-sheet {
+    display: none;
+  }
+
   .solution-sheet .qcard {
     background: #fafafa;
   }
@@ -220,6 +224,7 @@
   @media print {
     body { background: #fff; padding: 0; display: block; }
     .controls, .print-note { display: none !important; }
+    .solution-sheet { display: block; }
     .sheet {
       width: 297mm;
       height: 210mm;
